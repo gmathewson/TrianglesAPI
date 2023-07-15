@@ -14,11 +14,12 @@ namespace TrianglesAPI.Controllers
         [HttpGet("GetVertices")]
         public ActionResult<Triangle> GetVertices(string id)
         {
+            id = id.Replace(" ", ""); //remove any blank spaces
             var triangle = TriangleService.Get(id);
 
             if (triangle.Vertices.Count == 0)
             {
-                return BadRequest(id + " is not a valid Id.  Id is case sensitive and should lie between A1-F12");
+                return BadRequest(id + " is not a valid Id.  Id should lie between A1 and F12");
             }
             return triangle;
         }
@@ -27,7 +28,7 @@ namespace TrianglesAPI.Controllers
         [HttpGet("GetId")]
         public ActionResult<Triangle> GetId(string verticesString)
         {
-
+            verticesString=verticesString.Replace(" ", ""); //remove any blank spaces 
             //split the string of the 3 pairs of coordinates at the place where the brackets join
             string[] vertexList = verticesString.Split(")(", StringSplitOptions.RemoveEmptyEntries);
 

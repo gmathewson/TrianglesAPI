@@ -78,7 +78,7 @@
                 //switch on row, and add to y coordinate
                 if (coordinatesbuilder.Count == 3)
                 {
-                    switch (id.Substring(0, 1))
+                    switch (id.Substring(0, 1).ToUpper())
 
                     {
                         case "F": break;
